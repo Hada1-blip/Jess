@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Conciergerie by Jess</title>
+  <meta name="description" content="Nos services de conciergerie : accueil voyageurs, ménage, linge, coordination, interventions, repassage, aide cuisine. 7j/7 en Île-de-France." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── SERVICES PAGE ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 24px rgba(0,0,0,.06);
+      transition: transform var(--trans), box-shadow var(--trans);
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: 0 12px 48px rgba(0,0,0,.1); }
+
+    .service-card__img {
+      width: 100%; height: 220px;
+      object-fit: cover;
+    }
+
+    .service-card__body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card__ico { font-size: 1.8rem; margin-bottom: .75rem; }
+    .service-card h3 {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: .6rem;
+    }
+    .service-card p { font-size: .9rem; color: var(--stone); line-height: 1.7; flex: 1; }
+    .service-card .btn { margin-top: 1.5rem; align-self: flex-start; }
+    @media(max-width:600px){ .service-card .btn { align-self: stretch; } }
+
+    .service-card--featured {
+      border-top: 3px solid var(--gold);
+    }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    @media(max-width:800px){ .process-steps { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:480px){ .process-steps { grid-template-columns: 1fr; } }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 12.5%; right: 12.5%;
+      height: 1px;
+      background: var(--sand);
+    }
+    @media(max-width:800px){ .process-steps::before { display: none; } }
+
+    .step { text-align: center; position: relative; }
+    .step__num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .step h4 { font-size: 1rem; margin-bottom: .5rem; }
+    .step p  { font-size: .85rem; color: var(--stone); }
+
+    /* ── TARIFS INFO ── */
+    .tarif-box {
+      background: var(--charcoal);
+      color: var(--white);
+      border-radius: 4px;
+      padding: 3rem;
+      text-align: center;
+    }
+    .tarif-box h3 { font-size: 1.8rem; color: var(--gold-lt); margin-bottom: 1rem; }
+    .tarif-box p  { color: rgba(255,255,255,.75); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Conciergerie <span>by Jess</span></a>
+      <ul class="nav__links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="galerie.html">Galerie</a></li>
+        <li><a href="reservation.html">Demande</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <a href="reservation.html" class="btn btn-primary nav__cta">Faire une demande</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav__drawer">
+    <a href="index.html">Accueil</a>
+    <a href="services.html">Services</a>
+    <a href="galerie.html">Galerie</a>
+    <a href="reservation.html">Demande</a>
+    <a href="contact.html">Contact</a>
+    <a href="reservation.html" class="btn btn-primary">Faire une demande</a>
+  </div>
+
+  <!-- PAGE HERO -->
+  <header class="page-hero" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&auto=format&fit=crop')">
+    <div class="container page-hero__inner">
+      <h1>Nos Services</h1>
+      <p>Des prestations complètes pour une gestion sereine de votre bien</p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section section--white">
+    <div class="container text-center">
+      <p class="section-label reveal">Prestations</p>
+      <h2 class="section-title reveal">Tout ce dont votre logement a besoin</h2>
+      <div class="divider reveal"></div>
+      <p class="section-sub reveal" style="margin:0 auto">De l'accueil de vos voyageurs jusqu'au ménage après leur départ, Conciergerie by Jess prend en charge chaque étape avec soin et professionnalisme.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES GRID -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="services-grid">
+
+        <div class="service-card service-card--featured reveal">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop" alt="Accueil voyageurs" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">🔑</div>
+            <h3>Accueil & Départ</h3>
+            <p>Remise des clés en main propre, présentation du logement, état des lieux d'entrée et de sortie. Vos voyageurs sont accueillis chaleureusement et repartent satisfaits.</p>
+            <a href="reservation.html" class="btn btn-primary">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-delay="100">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&auto=format&fit=crop" alt="Ménage professionnel" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">✨</div>
+            <h3>Ménage Professionnel</h3>
+            <p>Nettoyage complet et minutieux entre chaque séjour : cuisine, salle de bain, chambres, espaces communs. Un logement impeccable pour chaque nouveau voyageur.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-delay="200">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1567113463300-102a7eb3cb26?w=600&auto=format&fit=crop" alt="Gestion du linge" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">🛏️</div>
+            <h3>Gestion du Linge</h3>
+            <p>Collecte, lavage, séchage et pliage du linge de maison : draps, serviettes, taies d'oreiller. Le linge est toujours frais et propre à l'arrivée des voyageurs.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&auto=format&fit=crop" alt="Coordination" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">📋</div>
+            <h3>Coordination & Gestion</h3>
+            <p>Gestion des plannings, coordination avec les prestataires, suivi des réservations et communication avec les plateformes. Vous êtes libéré de toute contrainte opérationnelle.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-delay="100">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&auto=format&fit=crop" alt="Interventions" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">🔧</div>
+            <h3>Interventions & Urgences</h3>
+            <p>Prise en charge des petites réparations, coordination avec les artisans, gestion des incidents. Réactivité assurée 7j/7 pour protéger votre bien.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal" data-delay="200">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&auto=format&fit=crop" alt="Repassage" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">👔</div>
+            <h3>Repassage</h3>
+            <p>Service de repassage soigné pour draps, taies, nappes et linge de maison. Un détail qui fait toute la différence dans l'expérience de vos voyageurs.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+        <div class="service-card reveal">
+          <img class="service-card__img" src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop" alt="Aide cuisine" loading="lazy" />
+          <div class="service-card__body">
+            <div class="service-card__ico">🍽️</div>
+            <h3>Aide en Cuisine</h3>
+            <p>Préparation de petits-déjeuners, approvisionnement du réfrigérateur, mise en place d'un panier de bienvenue. Des petites attentions qui font toute la différence.</p>
+            <a href="reservation.html" class="btn btn-outline">Demander ce service</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section section--white">
+    <div class="container">
+      <div class="text-center reveal" style="margin-bottom:3.5rem">
+        <p class="section-label">Comment ça marche</p>
+        <h2 class="section-title">En 4 étapes simples</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="process-steps">
+        <div class="step reveal">
+          <div class="step__num">1</div>
+          <h4>Prise de contact</h4>
+          <p>Remplissez le formulaire de demande ou appelez-nous directement.</p>
+        </div>
+        <div class="step reveal" data-delay="100">
+          <div class="step__num">2</div>
+          <h4>Étude de votre besoin</h4>
+          <p>Nous échangeons pour comprendre vos attentes et établir un devis.</p>
+        </div>
+        <div class="step reveal" data-delay="200">
+          <div class="step__num">3</div>
+          <h4>Mise en place</h4>
+          <p>Remise des clés, visite du logement, démarrage de la prestation.</p>
+        </div>
+        <div class="step reveal" data-delay="300">
+          <div class="step__num">4</div>
+          <h4>Suivi continu</h4>
+          <p>Rapports réguliers, disponibilité 7j/7, tranquillité d'esprit garantie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TARIF CTA -->
+  <section class="section section--light">
+    <div class="container">
+      <div class="tarif-box reveal">
+        <h3>Devis personnalisé & gratuit</h3>
+        <p>Chaque logement est unique. Contactez-nous pour recevoir un devis adapté à votre situation, sans engagement.</p>
+        <a href="reservation.html" class="btn btn-primary">Demander un devis gratuit</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <p class="footer__logo">Conciergerie <span>by Jess</span></p>
+          <p>Votre partenaire de confiance pour la gestion de vos locations saisonnières en Île-de-France.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="reservation.html">Demande de service</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul class="footer__links">
+            <li><a href="tel:0649705176">📞 06 49 70 51 76</a></li>
+            <li><a href="mailto:jesslb@hotmail.fr">✉ jesslb@hotmail.fr</a></li>
+            <li style="color:rgba(255,255,255,.5);font-size:.87rem;margin-top:.5rem">Disponible 7j/7<br>8h – 20h</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bar">
+        <p>© 2024 Conciergerie by Jess · Tous droits réservés</p>
+        <p>Île-de-France</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
