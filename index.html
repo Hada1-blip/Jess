@@ -8,216 +8,67 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── HOME-SPECIFIC ── */
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&auto=format&fit=crop') center/cover no-repeat;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(120deg, rgba(58,53,48,.72) 0%, rgba(58,53,48,.3) 100%);
-    }
-    .hero__inner {
-      position: relative;
-      max-width: 680px;
-      padding: calc(var(--nav-h) + 2rem) 24px 4rem;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
-    }
-    @media(min-width:900px){
-      .hero__inner { margin-left: calc((100vw - 1180px)/2 + 24px); }
-    }
-    .hero__label {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .22em;
-      text-transform: uppercase;
-      color: var(--gold-lt);
-      margin-bottom: 1.25rem;
-      opacity: 0;
-      animation: fadeUp .8s .2s forwards;
-    }
-    .hero h1 {
-      font-family: var(--ff-display);
-      font-size: clamp(3rem, 6vw, 5.2rem);
-      font-weight: 300;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      opacity: 0;
-      animation: fadeUp .9s .4s forwards;
-    }
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; background: url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1600&auto=format&fit=crop') center/cover no-repeat; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, rgba(58,53,48,.72) 0%, rgba(58,53,48,.3) 100%); }
+    .hero__inner { position: relative; max-width: 680px; padding: calc(var(--nav-h) + 2rem) 24px 4rem; margin-left: auto; margin-right: auto; width: 100%; }
+    @media(min-width:900px){ .hero__inner { margin-left: calc((100vw - 1180px)/2 + 24px); } }
+    .hero__label { font-size: .7rem; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-lt); margin-bottom: 1.25rem; opacity: 0; animation: fadeUp .8s .2s forwards; }
+    .hero h1 { font-family: var(--ff-display); font-size: clamp(3rem, 6vw, 5.2rem); font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp .9s .4s forwards; }
     .hero h1 em { font-style: italic; color: var(--gold-lt); }
-    .hero__text {
-      font-size: 1rem;
-      color: rgba(255,255,255,.82);
-      line-height: 1.8;
-      max-width: 480px;
-      margin-bottom: 2.5rem;
-      opacity: 0;
-      animation: fadeUp .9s .6s forwards;
-    }
-    .hero__actions {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0;
-      animation: fadeUp .9s .8s forwards;
-    }
-    @keyframes fadeUp {
-      from { opacity:0; transform: translateY(20px); }
-      to   { opacity:1; transform: none; }
-    }
+    .hero__text { font-size: 1rem; color: rgba(255,255,255,.82); line-height: 1.8; max-width: 480px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp .9s .6s forwards; }
+    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp .9s .8s forwards; }
+    @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: none; } }
 
     /* ── BADGE BAR ── */
-    .badge-bar {
-      background: var(--charcoal);
-      padding: 20px 0;
-    }
-    .badge-bar__inner {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3rem;
-      flex-wrap: wrap;
-    }
-    .badge-bar__item {
-      display: flex; align-items: center; gap: .75rem;
-      color: rgba(255,255,255,.7);
-      font-size: .8rem;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
+    .badge-bar { background: var(--charcoal); padding: 20px 0; }
+    .badge-bar__inner { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+    .badge-bar__item { display: flex; align-items: center; gap: .75rem; color: rgba(255,255,255,.7); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; }
     .badge-bar__item .ico { color: var(--gold); font-size: 1.1rem; }
 
     /* ── DIFFERENTIATORS CAROUSEL ── */
     .diff-carousel { position: relative; overflow: hidden; padding-bottom: 3rem; }
-    .carousel__track {
-      display: flex;
-      transition: transform .5s cubic-bezier(.4,0,.2,1);
-      user-select: none;
-    }
-    .carousel__item {
-      flex: 0 0 calc(100%/3);
-      padding: 0 12px;
-      box-sizing: border-box;
-    }
+    .carousel__track { display: flex; transition: transform .5s cubic-bezier(.4,0,.2,1); user-select: none; }
+    .carousel__item { flex: 0 0 calc(100%/3); padding: 0 12px; box-sizing: border-box; }
     @media(max-width:899px){ .carousel__item { flex: 0 0 50%; } }
     @media(max-width:599px){ .carousel__item { flex: 0 0 100%; } }
-
-    .diff-card {
-      background: var(--white);
-      border-radius: 4px;
-      padding: 2.5rem 2rem;
-      text-align: center;
-      box-shadow: 0 2px 24px rgba(0,0,0,.06);
-      height: 100%;
-    }
+    .diff-card { background: var(--white); border-radius: 4px; padding: 2.5rem 2rem; text-align: center; box-shadow: 0 2px 24px rgba(0,0,0,.06); height: 100%; }
     .diff-card__ico { font-size: 2.2rem; margin-bottom: 1rem; }
     .diff-card h3 { font-size: 1.3rem; margin-bottom: .75rem; }
     .diff-card p  { font-size: .88rem; color: var(--stone); line-height: 1.7; }
-
-    .carousel__controls {
-      display: flex; align-items: center; justify-content: center; gap: 1rem;
-      margin-top: 2rem;
-    }
-    .carousel__prev, .carousel__next {
-      width: 42px; height: 42px;
-      border-radius: 50%;
-      border: 1.5px solid var(--sand);
-      background: var(--white);
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--trans);
-      display: flex; align-items: center; justify-content: center;
-    }
+    .carousel__controls { display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; }
+    .carousel__prev, .carousel__next { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--sand); background: var(--white); font-size: 1rem; cursor: pointer; transition: var(--trans); display: flex; align-items: center; justify-content: center; }
     .carousel__prev:hover, .carousel__next:hover { border-color: var(--gold); color: var(--gold); }
     .carousel__dots { display: flex; gap: .5rem; }
-    .carousel__dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: var(--sand); cursor: pointer; border: none;
-      transition: background var(--trans), transform var(--trans);
-    }
+    .carousel__dot { width: 7px; height: 7px; border-radius: 50%; background: var(--sand); cursor: pointer; border: none; transition: background var(--trans), transform var(--trans); }
     .carousel__dot.active { background: var(--gold); transform: scale(1.3); }
 
     /* ── STATS ── */
     .stats { background: var(--beige); }
-    .stats__grid {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 2rem;
-    }
+    .stats__grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; }
     @media(max-width:700px){ .stats__grid { grid-template-columns: repeat(2,1fr); } }
     .stat-box { text-align: center; padding: 2rem 1rem; }
-    .stat-box__num {
-      font-family: var(--ff-display);
-      font-size: 3.2rem;
-      font-weight: 300;
-      color: var(--gold);
-      display: block;
-      line-height: 1;
-    }
+    .stat-box__num { font-family: var(--ff-display); font-size: 3.2rem; font-weight: 300; color: var(--gold); display: block; line-height: 1; }
     .stat-box__label { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--stone); margin-top: .5rem; }
 
     /* ── ABOUT SPLIT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    @media(max-width:800px){
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    @media(max-width:800px){ .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
     .about__img { border-radius: 2px; overflow: hidden; position: relative; }
     .about__img img { width: 100%; height: 440px; object-fit: cover; }
-    .about__img::after {
-      content: '';
-      position: absolute;
-      bottom: -12px; right: -12px;
-      width: 60%; height: 60%;
-      border: 2px solid var(--gold);
-      border-radius: 2px;
-      pointer-events: none;
-    }
-    @media(max-width:600px){
-      .about__img img { height: 260px; }
-      .about__img::after { display: none; }
-    }
+    .about__img::after { content: ''; position: absolute; bottom: -12px; right: -12px; width: 60%; height: 60%; border: 2px solid var(--gold); border-radius: 2px; pointer-events: none; }
+    @media(max-width:600px){ .about__img img { height: 260px; } .about__img::after { display: none; } }
     .about__text p { font-size: .95rem; color: var(--stone); line-height: 1.9; margin-bottom: 1rem; }
-    .about__sig {
-      font-family: var(--ff-display);
-      font-size: 1.5rem;
-      font-style: italic;
-      color: var(--gold);
-      margin-top: 1.5rem;
-    }
+    .about__sig { font-family: var(--ff-display); font-size: 1.5rem; font-style: italic; color: var(--gold); margin-top: 1.5rem; }
 
     /* ── REVIEWS ── */
-    .reviews__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap: 1.75rem;
-    }
-    .review-card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 2px;
-      border-left: 3px solid var(--gold);
-    }
+    .reviews__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.75rem; }
+    .review-card { background: var(--white); padding: 2rem; border-radius: 2px; border-left: 3px solid var(--gold); }
     .review-card__stars { color: var(--gold); font-size: 1rem; letter-spacing: .1em; margin-bottom: .75rem; }
     .review-card__text { font-size: .92rem; color: var(--stone); line-height: 1.8; margin-bottom: 1.25rem; }
     .review-card__author { font-weight: 600; font-size: .82rem; letter-spacing: .05em; color: var(--charcoal); }
 
     /* ── CTA BANNER ── */
-    .cta-banner {
-      background: url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=1400&auto=format&fit=crop') center/cover no-repeat;
-      position: relative;
-      padding: 96px 0;
-      text-align: center;
-    }
+    .cta-banner { background: url('https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=1400&auto=format&fit=crop') center/cover no-repeat; position: relative; padding: 96px 0; text-align: center; }
     .cta-banner::before { content:''; position:absolute;inset:0; background:rgba(58,53,48,.72); }
     .cta-banner__inner { position: relative; }
     .cta-banner h2 { font-family: var(--ff-display); font-size: clamp(2rem,4vw,3rem); color: var(--white); margin-bottom: 1rem; }
@@ -267,17 +118,17 @@
     </div>
   </header>
 
-  <!-- ── BADGE BAR ── -->
+  <!-- ── BADGE BAR (EMOJIS RETIRÉS) ── -->
   <div class="badge-bar">
     <div class="badge-bar__inner">
-      <div class="badge-bar__item"><span class="ico">🏅</span> Service 7j/7</div>
-      <div class="badge-bar__item"><span class="ico">✓</span> Réactivité garantie</div>
-      <div class="badge-bar__item"><span class="ico">🔑</span> Clé en main</div>
-      <div class="badge-bar__item"><span class="ico">💛</span> Relation de confiance</div>
+      <div class="badge-bar__item"><span class="ico"></span> Service 7j/7</div>
+      <div class="badge-bar__item"><span class="ico"></span> Réactivité garantie</div>
+      <div class="badge-bar__item"><span class="ico"></span> Clé en main</div>
+      <div class="badge-bar__item"><span class="ico"></span> Relation de confiance</div>
     </div>
   </div>
 
-  <!-- ── CE QUI NOUS DIFFÉRENCIE ── -->
+  <!-- ── DIFFERENTIATORS CAROUSEL (EMOJIS GARDÉS) ── -->
   <section class="section section--white">
     <div class="container">
       <div class="text-center reveal">
@@ -379,98 +230,4 @@
           <p class="section-label">Notre histoire</p>
           <h2 class="section-title">Jess, à votre service</h2>
           <div class="divider divider--left"></div>
-          <p>Passionnée par les biens d'exception et le service personnalisé, j'ai créé <strong>Conciergerie by Jess</strong> pour offrir aux propriétaires une tranquillité d'esprit totale.</p>
-          <p>Chaque logement est unique, chaque client mérite une attention particulière. Mon objectif : valoriser votre bien et garantir une expérience mémorable à vos voyageurs.</p>
-          <p>Réactive, rigoureuse et toujours disponible, je m'investis comme si c'était mon propre appartement.</p>
-          <p class="about__sig">— Jess</p>
-          <br>
-          <a href="services.html" class="btn btn-outline">Nos prestations</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── AVIS CLIENTS ── -->
-  <section class="section section--light">
-    <div class="container">
-      <div class="text-center reveal" style="margin-bottom:3rem">
-        <p class="section-label">Témoignages</p>
-        <h2 class="section-title">Ce que disent nos clients</h2>
-        <div class="divider"></div>
-      </div>
-      <div class="reviews__grid">
-        <div class="review-card reveal">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Si vous voulez trouver quelqu'un de sérieux qui aime son travail et avec qui vous pouvez avoir confiance, n'hésitez pas. Jess est extraordinaire !"</p>
-          <p class="review-card__author">Béatrice S.</p>
-        </div>
-        <div class="review-card reveal" data-delay="100">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Très professionnel, je recommande pour vos locations. Réactive, sérieuse, et le logement est toujours impeccable pour les voyageurs."</p>
-          <p class="review-card__author">Céline L.</p>
-        </div>
-        <div class="review-card reveal" data-delay="200">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Jess gère mon appartement depuis 8 mois. Je n'ai aucun souci, elle s'occupe de tout avec soin. Un service vraiment clé en main !"</p>
-          <p class="review-card__author">Marc D.</p>
-        </div>
-        <div class="review-card reveal" data-delay="300">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Disponible, ponctuelle et d'une gentillesse remarquable. Mes voyageurs sont toujours enchantés. Je la recommande les yeux fermés."</p>
-          <p class="review-card__author">Sophie R.</p>
-        </div>
-        <div class="review-card reveal" data-delay="400">
-          <div class="review-card__stars">★★★★★</div>
-          <p class="review-card__text">"Grâce à Jess, mon taux d'occupation a augmenté et les avis de mes locataires sont excellents. Une vraie professionnelle du secteur."</p>
-          <p class="review-card__author">Thomas B.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CTA BANNER ── -->
-  <section class="cta-banner">
-    <div class="container cta-banner__inner">
-      <h2>Prêt à confier votre logement ?</h2>
-      <p>Faites une demande en quelques clics. Nous vous répondons sous 24h.</p>
-      <a href="reservation.html" class="btn btn-primary">Faire une demande</a>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ── -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__grid">
-        <div>
-          <p class="footer__logo">Conciergerie <span>by Jess</span></p>
-          <p>Votre partenaire de confiance pour la gestion de vos locations saisonnières en Île-de-France.</p>
-        </div>
-        <div>
-          <h4>Navigation</h4>
-          <ul class="footer__links">
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="galerie.html">Galerie</a></li>
-            <li><a href="reservation.html">Demande de service</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Contact</h4>
-          <ul class="footer__links">
-            <li><a href="tel:0649705176">📞 06 49 70 51 76</a></li>
-            <li><a href="mailto:jesslb@hotmail.fr">✉ jesslb@hotmail.fr</a></li>
-            <li style="color:rgba(255,255,255,.5);font-size:.87rem;margin-top:.5rem">Disponible 7j/7<br>8h – 20h</li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer__bar">
-        <p>© 2024 Conciergerie by Jess · Tous droits réservés</p>
-        <p>Île-de-France</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+          <p>Passionnée par les biens d'exception et le service personnalisé, j'ai créé <strong>Conciergerie by Jess</strong> pour offrir aux
